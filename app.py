@@ -42,11 +42,14 @@ if st.button("Generate LaTeX Code"):
     }
 
     payload = {
-        "input": description,
+        "prompt_variables": {
+            "description": description
+        },
         "parameters": {
             "decoding_method": "greedy"
         }
     }
+
 
     with st.spinner("Generating LaTeX TikZ code..."):
         response = requests.post(DEPLOYMENT_URL, headers=headers, json=payload)
